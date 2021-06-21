@@ -1,0 +1,74 @@
+
+<%- include ("./partials/header") %>
+
+
+<head>
+    <style>
+        div {
+            padding: 15px;
+        }
+    </style>
+
+</head>
+
+    <header>
+            <center><h1 class="badge badge-danger"  style="width: 430px; height: 45px; font-size: xx-large;">COMPANIES</h1>
+            </center>
+            
+    </header>
+        
+        <div class="row justify-content-md-center">
+       <div class="col-5"> <br><pre><h4>    List Of Companies :</h4></pre>
+        
+           </div>
+         <div class="col-6">
+            <p>
+                <form action="/company" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Search company" autocomplete="off" size="46" class="search-bar form-control form-control-sm">
+                        
+                    </div>
+                    <input type="submit" value="Search" class="btn btn-primary search-btn btn-sm">
+                </form>
+            </p>
+         </div>  
+       </div>
+            <div class="row justify-content-md-center">
+           <div class="col-10" style="padding: 30px; background-color: rgba(165, 42, 42, 0.4); border-radius: 15px;">
+        <div class="hospitals">
+            <% if (noMatch !== null) {%>
+              <div class="col-md-12">
+                <h4><%= noMatch %></h4>
+              </div>
+            <% } %>
+         
+            <br>
+            <% companys.forEach(function(company) { %>
+                
+                <div class="col-md-3 col-sm-6" >
+                    <div class="img-thumbnail" style="background-color: lightgrey;">
+                    
+                        <div class="caption">
+                            <h4 class="hospital-name"><%=company.name %></h4>
+                           
+                        </div>
+                        <p>
+                            <% if(!currentUser) { %>
+                                <a href="/loginstudent" class="btn btn-danger">More Info</a>
+                                <% } else if (currentUser.username==company.username) { %>
+                                    <a href="/profile/<%= company.username %>" class="btn btn-danger">More Info</a>
+                                    <% } 
+                                    else{ %>
+                            <a href="/disable/<%= company.username %>" class="btn btn-danger">More Info</a>
+                            <% } %>
+                                    
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+    </div>
+</div>
+    
+       </div>
+    <%- include ("./partials/footer") %>
+

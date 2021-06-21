@@ -1,0 +1,64 @@
+
+<%- include ("./partials/header") %>
+<style>
+    #textboxid
+    {
+        height:50px;
+        font-size:14pt;
+    }
+      </style>
+      
+      
+    
+    <form action="/add_answer" method="POST"> 
+      <%var element;%>
+        <table id="t01" style="width:100%">
+            
+              <th><center><h1>Answers</h1></center></th>
+        <%var c=0; %>
+            <%questions.forEach(function(question){%>
+                  <tr>
+                      <td>
+                       
+                           <%Object.keys(question).forEach(function(key){ %>
+                            
+                            
+                            <% var tags=question[key] %>
+                            
+                            <% if(c==1){ element=tags;%>
+                                <p><h2> <%=  tags %> ?</h2></p>
+                            <%}
+                            else if(c>1){%> 
+                          <% for(var i=0; i<tags.length; i++) { 
+                            var tags_array = tags[i]; %>
+                            
+                           
+                           <p><%=i+1%>)  <%=  tags_array %> </p> 
+                     
+                          
+                     <%}%> 
+    
+                     <%}%>
+                            <%c++;%>
+    
+                          <% });%>
+                
+                       
+    
+                    </td>
+                    </tr>
+            <% }); %>
+        </table>
+      
+    <br>
+    <br>
+    <br>
+    Add your answer below:<br>
+    <input type="text" name="answer" id="textboxid">
+    <br>
+    <br>
+    <center> <button id="btn-login" name="question" value="<%=element %>">Add answer</button> </center>
+        
+    
+        </form>
+        <%- include ("./partials/footer") %>

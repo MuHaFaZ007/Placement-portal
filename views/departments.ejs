@@ -1,0 +1,16 @@
+
+
+<%- include ("./partials/header") %>
+
+<form action="/subjects" method="POST"> 
+    
+        <h1><center>Departments</h1>
+  
+      <%departments.forEach(function(department){%>
+           
+              <p><center><button id="btn-login"  class="btn btn-success" name="dept" value="<%=department.deptname%>"><%=department.deptname %></button></center></p>
+              
+      <% }); %>
+    </center>
+  </form>
+  <%- include ("./partials/footer") %>

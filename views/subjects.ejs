@@ -1,0 +1,31 @@
+
+
+
+ <%- include ("./partials/header") %>
+
+<form action="/tut_questions" method="POST"> 
+  
+    <center><h1>Subjects</h1></center>
+         
+            <% for(var i= 0 ; i < departments.length; i++) {%>
+                
+                  <p><center><h2><%=departments[i].deptname %></h2></center></p>
+               
+                 
+               <%  for(var j=0 ; j < departments[i].subject.length; j++){%>
+                 
+                  
+                    <p><button id="btn-login"  class="btn btn-success" name="question" value="<%=departments[i].subject[j].subname %>"><%=departments[i].subject[j].subname %></button></p>
+          
+          
+                
+              
+                 <% } %>
+               
+                <% } %>
+                 
+  <br>
+  <br>
+  <br>
+</form>
+<%- include ("./partials/footer") %>

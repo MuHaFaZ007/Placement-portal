@@ -1,0 +1,54 @@
+
+<%- include ("./partials/header") %>
+
+<form action="" method="POST"> 
+  
+    <center><h1>Questions</h1></center>
+    
+
+            <% for(var i= 0 ; i < questions.length; i++) {%>
+                
+              
+               
+                
+                  <%  for(var j=0 ; j < questions[i].subject.length; j++){
+                    if(questions[i].subject[j].subname==subject){
+                    %>
+                                           
+                     
+                       <p><center><h2><%=questions[i].subject[j].subname %></center></h2></p>
+                 
+                       <%  for(var k=0 ; k < questions[i].subject[j].questions.length; k++){%>
+                        
+                               
+                             <p><h3><%=questions[i].subject[j].questions[k].question %>?</h3></p>
+                            
+                             <ul>
+                       
+
+                       <%  for(var l=0 ; l < questions[i].subject[j].questions[k].answer.length; l++){%>
+                       
+                        
+                           <p><li><%=questions[i].subject[j].questions[k].answer[l] %> </li></p>
+                            
+                       
+                       
+                          
+                       
+                        <% } %>     
+                     
+                    </ul>
+                        <% } %>     
+                   
+                      
+                    <% }} %>
+
+                   
+              
+                    <% } %>   
+               
+  <br>
+  <br>
+  <br>
+</form>
+<%- include ("./partials/footer") %>

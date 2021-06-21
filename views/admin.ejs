@@ -1,0 +1,57 @@
+
+
+<%- include ("./partials/header") %>
+
+<head>
+    
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    </head>
+    <body><h1>
+
+        List of notifications:
+        
+    </h1>
+    <div class="card-body pt-0">
+            	
+        <table class="table table-bordered">
+            <% notifications.forEach(function(notification) { 
+                 
+                %>
+                
+            
+              
+<tr>
+    
+            <td width="90%"> <%=notification.msg%></td>
+            <td width="5%"><form action="/main/deletemsg" method="post"><input type="hidden" value="<%=notification._id%>" name="id"><button style="font-size:24px"><i class="fa fa-trash-o"></i></button></form></td>
+          
+          </tr>
+          <%
+              }); %>
+         
+          </table>
+          </div>
+<center>
+    <h3>ADD NEW NOTIFICATION</h3>
+          <form action="/main/addmsg" method="post">
+
+            <input type="text" name="newmsg" size="100"placeholder="enter new notification"><br>
+        <button>
+            ADD NOTIFICATION
+        </button>
+        
+        </form>
+    </center>
+
+  
+        
+       
+
+
+    </body>
+
+<%- include ("./partials/footer") %>
